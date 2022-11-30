@@ -1,10 +1,11 @@
 <?php
 
-    require_once 'helpers/Config.php';  /* Dependencia*/
-    include_once CABECALHO;
+require_once "helpers/Config.php";
+
+include_once CABECALHO;
 
 ?>
-
+    
     <!-- Conteúdo -->
 
     <main class="container mt-5 mb-5">
@@ -43,6 +44,6 @@
 
 <?php
 
-    
-    include_once RODAPE;
+include_once RODAPE;
+
 ?>

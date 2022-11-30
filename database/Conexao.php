@@ -8,16 +8,17 @@ function conexao()
     $senha = "";
 
 
-try
-{
-    $conn = new PDO("mysql:host=$host;dbname=$banco;", $usuario, $senha);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->exec("set names utf8");
+    try {
 
-    return $conn;
-}catch(PDOException $e)
-{
-    die($e->getMessage());
-    return null;
+        $conn = new PDO("mysql:host=$host;dbname=$banco", $usuario, $senha);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->exec("set names utf8");
+
+        return $conn;
+
+    } catch(PDOException $e) {
+
+        die($e->getMessage());
+
+    }
 }
- }
