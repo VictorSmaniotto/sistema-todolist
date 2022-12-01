@@ -52,3 +52,10 @@ function editar($id){
    }
    return $plano;
 }
+
+function deletar($id){
+    if(deletarPlano($id)){
+        header("Location:/admin/plano");
+        exit;
+    }
+}

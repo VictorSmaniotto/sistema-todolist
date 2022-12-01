@@ -1,6 +1,9 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT']."/controllers/PlanoController.php";
 
+    if(isset($_GET['deletar'])){
+        deletar($_GET['deletar']);
+    }
     $planos = index();
 
     
@@ -40,7 +43,7 @@
                     <td>
                         <a href="/admin/plano/visualizar?id=<?=$plan['id'] ?>" class="btn btn-sm btn-light"><i class="fas fa-eye"></i></a>
                         <a href="/admin/plano/editar?id=<?=$plan['id'] ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                        <a href="/admin/plano/?id=<?=$plan['id'] ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                        <a href="/admin/plano?deletar=<?=$plan['id'] ?>" onclick="return confirm('Deseja deletar o registro?');" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
