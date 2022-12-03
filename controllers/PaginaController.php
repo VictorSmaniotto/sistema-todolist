@@ -31,5 +31,29 @@ function cadastrar(){
     return $pagina;
 }
 
+function editar($id){
+    $pagina = buscarPagina($id);
+
+    if(!empty($_POST)){
+        $pagina['titulo'] = $_POST['titulo'];
+        $pagina['slug'] = $_POST['slug'];
+        $pagina['descricao'] = $_POST['descricao'];
+
+        if(editarPagina($pagina, $id)){
+            header("Location:/admin/pagina");
+            exit;
+        }
+    }
+    return $pagina;
+
+}
+
+function deletar($id){
+    if(deletarPagina($id)){
+        header("Location:/admin/pagina");
+        exit;
+    }
+    
+}
 
 ?>

@@ -38,6 +38,11 @@ function buscarPagina($id){
 }
 
 function cadastrarPagina($pagina){
+
+    if(validaPagina($pagina)){
+        return false;
+    }
+
     $db = conexao();
     $sql = "INSERT INTO paginas (titulo, slug, descricao)
                         VALUES (:titulo, :slug, :descricao)";
@@ -57,6 +62,11 @@ function cadastrarPagina($pagina){
 }
 
 function editarPagina($pagina, $id){
+
+    if(validaPagina($pagina)){
+        return false;
+    }
+
     $db = conexao();
     $sql = "UPDATE paginas SET
                              titulo=:titulo,
@@ -79,4 +89,42 @@ function editarPagina($pagina, $id){
     }                            
 }
 
-?>
+function deletarPagina($id){
+    $db = conexao();
+    $sql = "DELETE FROM paginas WHERE id=:id";
+
+    try {
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return true;
+
+
+    } catch (PDOException $e) {
+        die($e->getMessage());
+        return false;
+    }
+}
+
+
+function validaPagina($pagina){
+    $validacao = false;
+
+    if($pagina['titulo'] == ''){
+        $_SESSION['titulo'] = 'Campo Obrigatório';
+        $validacao = true;
+    }
+
+    if($pagina['slug'] == ''){
+        $_SESSION['slug'] = 'Campo Obrigatório';
+        $validacao = true;
+    }
+
+    if($pagina['descricao'] == ''){
+        $_SESSION['descricao'] = 'Campo Obrigatório';
+        $validacao = true; 
+    }
+
+    return $validacao;
+}

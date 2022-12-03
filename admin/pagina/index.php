@@ -1,7 +1,13 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT']."/controllers/PaginaController.php";
-$pagina = index();
+
+if(isset($_GET['deletar'])){
+    deletar($_GET['deletar']);
+}else{
+    $pagina = index();
+}
+
 ?>
 
 <?php include_once CABECALHO; ?>
@@ -45,7 +51,7 @@ $pagina = index();
                                 <a class="btn btn-sm btn-primary" href="/admin/pagina/editar?id=<?=$pag['id']?>">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a class="btn btn-sm btn-danger deletar" href="/admin/pagina/deletar">
+                                <a class="btn btn-sm btn-danger deletar" href="/admin/pagina?deletar=<?=$pag['id'] ?>">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
                             </td>
