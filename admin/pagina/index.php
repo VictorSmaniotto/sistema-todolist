@@ -51,7 +51,7 @@ if(isset($_GET['deletar'])){
                                 <a class="btn btn-sm btn-primary" href="/admin/pagina/editar?id=<?=$pag['id']?>">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a class="btn btn-sm btn-danger deletar" href="/admin/pagina?deletar=<?=$pag['id'] ?>">
+                                <a class="btn btn-sm btn-danger deletar" href="/admin/pagina?deletar=<?=$pag['id'] ?>" onclick="return confirm('Deseja deletar o registro?');">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
                             </td>

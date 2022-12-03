@@ -1,6 +1,7 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT']."/helpers/Config.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/helpers/Funcoes.php";
 
 require_once $_SERVER['DOCUMENT_ROOT']."/models/Plano.php";
 
